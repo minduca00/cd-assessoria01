@@ -481,6 +481,19 @@ header.on-dark .hamburger span{background:var(--white);}
 .team-card-body h3{font-size:18px;font-weight:500;margin-bottom:4px;transition:color .3s ease;}
 .team-card:hover .team-card-body h3{color:var(--blue);}
 .team-card-body .role{color:var(--blue);font-size:12.5px;letter-spacing:.05em;text-transform:uppercase;font-weight:600;margin-bottom:12px;display:block;}
+.team-card-body .oab-badge{
+  display:inline-block;
+  background:linear-gradient(135deg, var(--blue-soft), var(--blue));
+  color:var(--white);
+  font-size:11px;
+  font-weight:600;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  padding:6px 12px;
+  border-radius:20px;
+  margin-bottom:10px;
+  box-shadow:0 4px 12px rgba(30,95,168,0.2);
+}
 .team-card-body p{color:var(--slate);font-size:14px;line-height:1.6;}
 
 /* ===== PARCERIAS ===== */
