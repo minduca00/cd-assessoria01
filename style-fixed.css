@@ -162,7 +162,7 @@ header.scrolled { background: rgba(13,13,13,.94); backdrop-filter: blur(12px); }
 .paid-traffic-services .service-section-heading h3 em { color: #777; }
 .paid-traffic-services ul { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0 34px; border-top: 1px solid #aaa; list-style: none; }
 .paid-traffic-services li { border-bottom: 1px solid #aaa; padding: 18px 0; color: #60605b; font-size: 14px; line-height: 1.5; }
-.paid-traffic-services li::before { margin-right: 10px; color: #888; content: '—'; }
+.paid-traffic-services li::before { content: ''; }
 @media (max-width: 900px) {
   .paid-traffic-layout { grid-template-columns: 1fr 1fr; gap: 42px 35px; }
 }
