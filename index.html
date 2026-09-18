@@ -28,15 +28,25 @@
     <a href="#top" class="logo" aria-label="CD Assessoria - início"><img src="logo/logo1-removebg-preview.png" alt="CD Assessoria" class="logo-mark" width="58" height="58"></a>
     <nav class="navlinks" aria-label="Navegação principal">
       <a href="#top" class="navlink">Início</a>
-      <a href="#historia" class="navlink">História</a>
-      <a href="#fundador" class="navlink">Quem conduz</a>
-      <a href="#servicos" class="navlink">Serviços</a>
-      <a href="#redes-sociais" class="navlink">Redes sociais</a>
-      <a href="#juridico" class="navlink">Jurídico</a>
-      <a href="#producao-musical" class="navlink">Produção Musical</a>
+      <div class="nav-group">
+        <button class="navlink nav-trigger" type="button" aria-expanded="false" aria-controls="aboutMenu">Sobre <span aria-hidden="true">+</span></button>
+        <div class="nav-dropdown" id="aboutMenu">
+          <a href="#historia">História</a>
+          <a href="#fundador">Quem conduz</a>
+          <a href="#equipe">Equipe</a>
+        </div>
+      </div>
+      <div class="nav-group">
+        <button class="navlink nav-trigger" type="button" aria-expanded="false" aria-controls="workMenu">Atuação <span aria-hidden="true">+</span></button>
+        <div class="nav-dropdown" id="workMenu">
+          <a href="#servicos">Serviços</a>
+          <a href="#redes-sociais">Redes Sociais</a>
+          <a href="#juridico">Jurídico</a>
+          <a href="#producao-musical">Produção Musical</a>
+        </div>
+      </div>
       <a href="#projetos" class="navlink">Projetos</a>
       <a href="#parcerias" class="navlink">Parcerias</a>
-      <a href="#equipe" class="navlink">Equipe</a>
       <a href="#contato" class="navlink">Contato</a>
     </nav>
     <div class="header-right">
@@ -48,15 +58,21 @@
 <nav class="mobile-menu" id="mobileMenu" aria-label="Menu mobile">
   <button class="close-btn" id="closeMenuBtn" aria-label="Fechar menu">×</button>
   <a href="#top">Início</a>
-  <a href="#historia">História</a>
-  <a href="#fundador">Quem conduz</a>
-  <a href="#servicos">Serviços</a>
-  <a href="#redes-sociais">Redes sociais</a>
-  <a href="#juridico">Jurídico</a>
-  <a href="#producao-musical">Produção Musical</a>
+  <details class="mobile-nav-group">
+    <summary>Sobre <span aria-hidden="true">+</span></summary>
+    <a href="#historia">História</a>
+    <a href="#fundador">Quem conduz</a>
+    <a href="#equipe">Equipe</a>
+  </details>
+  <details class="mobile-nav-group">
+    <summary>Atuação <span aria-hidden="true">+</span></summary>
+    <a href="#servicos">Serviços</a>
+    <a href="#redes-sociais">Redes Sociais</a>
+    <a href="#juridico">Jurídico</a>
+    <a href="#producao-musical">Produção Musical</a>
+  </details>
   <a href="#projetos">Projetos</a>
   <a href="#parcerias">Parcerias</a>
-  <a href="#equipe">Equipe</a>
   <a href="#contato">Contato</a>
   <a href="https://wa.me/558184679901" target="_blank" rel="noopener" class="mobile-cta">Fale conosco ↗</a>
 </nav>

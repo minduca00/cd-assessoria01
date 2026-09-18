@@ -36,11 +36,18 @@ mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => 
   hamburgerBtn.setAttribute('aria-expanded', 'false');
 }));
 
-// Garante que a âncora seja aplicada depois que o menu sair da tela.
-mobileMenu.querySelectorAll('a[href^="#"]').forEach(a => a.addEventListener('click', () => {
-  const target = document.querySelector(a.getAttribute('href'));
-  if (target) target.scrollIntoView({ behavior: 'auto', block: 'start' });
+// Fecha os grupos desktop ao clicar fora e preserva o scroll suave nativo.
+document.querySelectorAll('.nav-trigger').forEach(trigger => trigger.addEventListener('click', () => {
+  const isOpen = trigger.getAttribute('aria-expanded') === 'true';
+  document.querySelectorAll('.nav-trigger').forEach(item => item.setAttribute('aria-expanded', 'false'));
+  trigger.setAttribute('aria-expanded', String(!isOpen));
 }));
+
+document.addEventListener('click', event => {
+  if (!event.target.closest('.nav-group')) {
+    document.querySelectorAll('.nav-trigger').forEach(trigger => trigger.setAttribute('aria-expanded', 'false'));
+  }
+});
 
 // Hero: divide o título em letras animadas uma a uma
 (function splitHeroTitle() {
@@ -48,7 +55,7 @@ mobileMenu.querySelectorAll('a[href^="#"]').forEach(a => a.addEventListener('cli
   if (!h1) return;
   const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   let index = 0;
-  h1.querySelectorAll('span, em').forEach(line => {
+  h1.querySelectorAll(':scope > span').forEach(line => {
     const text = line.textContent;
     line.textContent = '';
     [...text].forEach(char => {
@@ -62,6 +69,19 @@ mobileMenu.querySelectorAll('a[href^="#"]').forEach(a => a.addEventListener('cli
       index++;
       line.appendChild(span);
     });
+  });
+
+  const typingLine = h1.querySelector(':scope > em');
+  if (!typingLine) return;
+  const typingText = typingLine.textContent;
+  typingLine.setAttribute('aria-label', typingText);
+  if (reduce) return;
+  typingLine.textContent = '';
+  typingLine.classList.add('typing');
+  [...typingText].forEach((char, charIndex) => {
+    window.setTimeout(() => {
+      typingLine.textContent += char;
+    }, 800 + charIndex * 180);
   });
 })();
 
@@ -90,6 +110,7 @@ const io = new IntersectionObserver((entries) => {
 document.querySelectorAll('.team-grid .team-card').forEach((el, i) => el.style.setProperty('--i', i));
 document.querySelectorAll('.project-grid .project').forEach((el, i) => el.style.setProperty('--i', i));
 document.querySelectorAll('.timeline article').forEach((el, i) => el.style.setProperty('--i', i));
+document.querySelectorAll('.section-intro > p, .about-copy, .legal-overview, .musical-overview, .contact-layout > div').forEach(el => el.classList.add('reveal'));
 
 document.querySelectorAll('.reveal, .line-mask, .timeline article').forEach(el => {
   if (reduceMotion) { el.classList.add('in'); return; }
