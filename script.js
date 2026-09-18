@@ -49,40 +49,30 @@ document.addEventListener('click', event => {
   }
 });
 
-// Hero: divide o título em letras animadas uma a uma
+// Hero: divide o título em letras animadas em sequência, sem efeito de máquina de escrever
 (function splitHeroTitle() {
   const h1 = document.querySelector('.hero h1');
   if (!h1) return;
   const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  let index = 0;
-  h1.querySelectorAll(':scope > span').forEach(line => {
-    const text = line.textContent;
+
+  const animateLine = (line) => {
+    const text = line.textContent.trim();
+    if (!text) return;
+
+    line.setAttribute('aria-label', text);
     line.textContent = '';
-    [...text].forEach(char => {
+
+    [...text].forEach((char, charIndex) => {
       const span = document.createElement('span');
       span.className = 'char';
-      span.textContent = char === ' '
-        ? String.fromCharCode(160)
-        : char;
+      span.textContent = char === ' ' ? String.fromCharCode(160) : char;
       if (reduce) span.style.animation = 'none';
-      span.style.animationDelay = (0.25 + index * 0.035).toFixed(3) + 's';
-      index++;
+      span.style.animationDelay = (0.2 + charIndex * 0.04).toFixed(3) + 's';
       line.appendChild(span);
     });
-  });
+  };
 
-  const typingLine = h1.querySelector(':scope > em');
-  if (!typingLine) return;
-  const typingText = typingLine.textContent;
-  typingLine.setAttribute('aria-label', typingText);
-  if (reduce) return;
-  typingLine.textContent = '';
-  typingLine.classList.add('typing');
-  [...typingText].forEach((char, charIndex) => {
-    window.setTimeout(() => {
-      typingLine.textContent += char;
-    }, 800 + charIndex * 180);
-  });
+  h1.querySelectorAll(':scope > span, :scope > em').forEach(line => animateLine(line));
 })();
 
 // Divide títulos de seção em linhas para o reveal em máscara
