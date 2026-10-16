@@ -100,12 +100,11 @@ const io = new IntersectionObserver((entries) => {
 document.querySelectorAll('.team-grid .team-card').forEach((el, i) => el.style.setProperty('--i', i));
 document.querySelectorAll('.project-grid .project').forEach((el, i) => el.style.setProperty('--i', i));
 document.querySelectorAll('.timeline article').forEach((el, i) => el.style.setProperty('--i', i));
-document.querySelectorAll('.section-intro > p, .about-copy, .legal-overview, .musical-overview, .contact-layout > div').forEach(el => el.classList.add('reveal'));
+document.querySelectorAll('.section-intro > p, .about-copy, .legal-overview, .musical-overview, .contact-layout > div, .october-campaign').forEach(el => el.classList.add('reveal'));
 
 document.querySelectorAll('.reveal, .line-mask, .timeline article').forEach(el => {
   if (reduceMotion) { el.classList.add('in'); return; }
   io.observe(el);
 });
-
 
 

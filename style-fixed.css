@@ -361,7 +361,7 @@ footer { border-top: 1px solid #333; background: var(--black); color: var(--whit
   .navlinks, .header-right > .header-cta { display: none; }
   .contact-links .header-cta { display: inline-flex !important; }
   .hamburger { display: block; }
-  .mobile-menu { position: fixed; inset: 0; z-index: 19; display: flex; flex-direction: column; justify-content: flex-start; overflow-y: auto; transform: translateY(-100%); background: var(--black); padding: 86px 40px 40px; transition: transform .4s; }
+  .mobile-menu { position: fixed; inset: 0; z-index: 21; display: flex; flex-direction: column; justify-content: flex-start; overflow-y: auto; transform: translateY(-100%); background: var(--black); padding: 86px 40px 40px; transition: transform .4s; }
   .mobile-menu.open { transform: none; }
   .mobile-menu a, .mobile-nav-group summary { flex: 0 0 auto; border-bottom: 1px solid #333; padding: 13px 0; color: var(--white); font: 500 48px 'Barlow Condensed'; text-transform: uppercase; }
   .mobile-nav-group { border-bottom: 1px solid #333; }
@@ -532,4 +532,58 @@ h1 em, h2 em {
 @media (prefers-reduced-motion: reduce) {
   h1 em, h2 em { animation: none; background-position: 50% 0; }
   .section-intro > p, .about-copy, .legal-overview, .musical-overview, .contact-layout > div { opacity: 1; transform: none; transition: none; }
+}
+
+.header-right { display: flex; align-items: center; gap: 16px; }
+.campaign-ribbon { display: block; width: 42px; height: 46px; flex: 0 0 auto; object-fit: contain; }
+.october-campaign {
+  margin: 32px 0 0;
+  border-left: 2px solid #c65d7e;
+  border-radius: 0 6px 6px 0;
+  padding: 18px 20px;
+  background: rgba(244, 243, 239, .52);
+  transition: opacity .8s ease, transform .8s cubic-bezier(.19, 1, .22, 1), border-color .3s ease, background-color .3s ease;
+}
+.october-campaign:hover { border-left-color: #a84363; background: rgba(244, 243, 239, .78); transform: translateX(3px); }
+.about-copy .october-campaign-label {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin-bottom: 12px;
+  color: #a84363;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+}
+.october-campaign-label span { border-left: 1px solid rgba(168, 67, 99, .45); padding-left: 9px; }
+.october-campaign h3 {
+  max-width: 390px;
+  margin-bottom: 12px;
+  color: #a84363;
+  font-size: clamp(30px, 3.3vw, 40px);
+  line-height: 1.02;
+}
+.about-copy .october-campaign > p:last-child {
+  margin-bottom: 0;
+  color: #555550;
+  font-size: 13px;
+  line-height: 1.65;
+}
+
+@media (max-width: 900px) {
+  .header-right { gap: 14px; }
+  .october-campaign { margin-top: 28px; }
+}
+
+@media (max-width: 560px) {
+  .header-right { gap: 10px; }
+  .campaign-ribbon { width: 36px; height: 40px; }
+  .october-campaign { margin-top: 26px; padding: 16px; }
+  .october-campaign h3 { font-size: 32px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .october-campaign { transition: none; }
+  .october-campaign:hover { transform: none; }
 }
